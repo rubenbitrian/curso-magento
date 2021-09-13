@@ -5,7 +5,7 @@ namespace Hiberus\Curso\Plugin\Pricing;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 class PricingPlugin
-{
+{/*
     public function afterFormatCurrency(
         $amount,
         $includeContainer = true,
@@ -13,6 +13,6 @@ class PricingPlugin
     ) {
         return $this->priceCurrency->format($amount, $includeContainer, $precision) . " / por unidad.";
     }
-
+*/
 
 }
