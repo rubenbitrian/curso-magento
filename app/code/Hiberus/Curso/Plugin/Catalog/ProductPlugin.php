@@ -7,17 +7,19 @@ use Magento\Store\Model\ScopeInterface;
 
 class ProductPlugin
 {
+
     /**
      * @var ScopeConfigInterface
      */
-    private ScopeConfigInterface $scopeConfig;
+    protected ScopeConfigInterface $scopeConfig;
 
     /**
      * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig
-    ){
+    )
+    {
         $this->scopeConfig = $scopeConfig;
     }
 
@@ -28,13 +30,26 @@ class ProductPlugin
      */
     public function afterGetName(
         \Magento\Catalog\Model\Product $subject,
-                                       $result
-    ){
-
+        $result
+    ) {
         $nombreGeneral = $this->scopeConfig->getValue(
-            'hiberus_nombre/general/nombre_general', ScopeInterface::SCOPE_STORE); // Section id/group id/field id, valor de la configuracion por tienda
-        $result = $result.' '.$nombreGeneral;
+            'hiberus_nombre/general/nombre_general',
+            ScopeInterface::SCOPE_STORE,
+
+        );
+        $result = $result . ' ' . $nombreGeneral;
         return $result;
     }
 
+    public function afterLoad(
+        \Magento\Catalog\Model\Product $subject,
+        $result
+    ) {
+        $numeroGeneral = $this->scopeConfig->getValue(
+            'hiberus_numero/general/numero_general',
+            ScopeInterface::SCOPE_STORE,
+
+        );
+        $result->setDescription($result->getDescription().$numeroGeneral);
+    }
 }
