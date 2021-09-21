@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+    <body>
+        <referenceBlock name="copyright" remove="true" />
+
+        <referenceContainer name="footer">
+            <block class="Magento\Theme\Block\Html\Header\Logo" name="footer.logo" before="-"/>
+            <block class="Magento\Cms\Block\Block" name="mi_bloque_estatico">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">mi_bloque_estatico</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <move element="mi_bloque_estatico" destination="footer" after="-"/>
+    </body>
+</page>
