@@ -4,9 +4,9 @@ namespace Hiberus\Curso\Api\Data;
 
 interface CursoInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-const TABLE_NAME = "hiberus_curso";
 
-const COLUMN_ID = "entity_id";
+    public const TABLE_NAME = 'hiberus_curso';
+    public const COLUMN_ID = 'entity_id';
 
     /**
      * @return int
@@ -15,7 +15,7 @@ const COLUMN_ID = "entity_id";
 
     /**
      * @param int $entityId
-     * return $this
+     * @return $this
      */
     public function setEntityId($entityId);
 
@@ -25,8 +25,8 @@ const COLUMN_ID = "entity_id";
     public function getNombre();
 
     /**
-     * @param string $entityId
-     * @return string
+     * @param string $nombre
+     * @return $this
      */
     public function setNombre($nombre);
 
@@ -37,7 +37,7 @@ const COLUMN_ID = "entity_id";
 
     /**
      * @param string $apellido
-     * return $this
+     * @return $this
      */
     public function setApellido($apellido);
 
@@ -51,6 +51,5 @@ const COLUMN_ID = "entity_id";
      * @return $this
      */
     public function setCreatedAt($createdAt);
-
 
 }

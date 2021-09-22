@@ -5,32 +5,29 @@ namespace Hiberus\Curso\Model;
 use Hiberus\Curso\Api\Data\CursoInterface;
 use Magento\Framework\Model\AbstractModel;
 
-class Curso extends AbstractModel implements \Hiberus\Curso\Api\Data\CursoInterface
+class Curso extends AbstractModel implements CursoInterface
 {
 
-    protected function _construct()
-    {
-        $this->_init(\Hiberus\Curso\Model\ResourceModel\Curso::class);
+    protected function _construct() {
+        $this->_init(\Hiberus\Curso\Model\ResourceModel\Examen::class);
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
-    public function getEntityId()
-    {
+    public function getEntityId() {
         return $this->getData('entity_id');
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
-    public function setEntityId($entityId)
-    {
-        $this->setData('entity_id', $entityId);
+    public function setEntityId($entityId) {
+        return $this->setData('entity_id', $entityId);
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function getNombre()
     {
@@ -38,15 +35,15 @@ class Curso extends AbstractModel implements \Hiberus\Curso\Api\Data\CursoInterf
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function setNombre($nombre)
     {
-        $this->setData('nombre', $nombre);
+        return $this->setData('nombre', $nombre);
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function getApellido()
     {
@@ -54,7 +51,7 @@ class Curso extends AbstractModel implements \Hiberus\Curso\Api\Data\CursoInterf
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function setApellido($apellido)
     {
@@ -62,7 +59,7 @@ class Curso extends AbstractModel implements \Hiberus\Curso\Api\Data\CursoInterf
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function getCreatedAt()
     {
@@ -70,7 +67,7 @@ class Curso extends AbstractModel implements \Hiberus\Curso\Api\Data\CursoInterf
     }
 
     /**
-     * @inerhitDoc
+     * @inheritDoc
      */
     public function setCreatedAt($createdAt)
     {

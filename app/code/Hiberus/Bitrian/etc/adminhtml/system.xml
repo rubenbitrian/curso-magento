@@ -5,7 +5,7 @@
         <tab id="hiberus" sortOrder="999" translate="label">
             <label>Hiberus</label>
         </tab>
-        <section id="hiberus_nombre" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10">
+        <section id="hiberus_bitrian" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10">
             <label>Hiberus Nombre</label>
             <tab>hiberus</tab>
             <resource>Hiberus_Curso::config</resource>

@@ -1,0 +1,16 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Hiberus\Bitrian\Api\Data\ExamenInterface" type="Hiberus\Bitrian\Model\Examen"/>
+    <preference for="Hiberus\Bitrian\Api\ExamenRepositoryInterface" type="Hiberus\Bitrian\Model\ExamenRepository"/>
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Hiberus\Bitrian\Api\Data\ExamenInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Hiberus\Bitrian\Api\Data\ExamenInterface::TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Hiberus\Bitrian\Api\Data\ExamenInterface::COLUMN_ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

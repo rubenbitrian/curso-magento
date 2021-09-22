@@ -2,32 +2,50 @@
 
 namespace Hiberus\Curso\Controller\Index;
 
+use Hiberus\Curso\Api\CursoRepositoryInterface;
+use Hiberus\Curso\Api\Data\CursoInterfaceFactory;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\ResponseInterface;
+use Hiberus\Curso\Model\ResourceModel\Examen;
 
 class Index implements HttpGetActionInterface
 {
 
     protected \Magento\Framework\View\Result\PageFactory $pageFactory;
-    private \Hiberus\Curso\Model\CursoFactory $cursoFactory;
+    protected CursoRepositoryInterface $cursoRepository;
+    protected CursoInterfaceFactory $cursoInterfaceFactory;
+    protected Examen $cursoResource;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Hiberus\Curso\Model\CursoFactory $cursoFactory
+        CursoRepositoryInterface $cursoRepository,
+        CursoInterfaceFactory $cursoInterfaceFactory,
+        Examen $cursoResource
+
     ) {
         $this->pageFactory = $pageFactory;
-        $this->cursoFactory = $cursoFactory;
+        $this->cursoRepository = $cursoRepository;
+        $this->cursoInterfaceFactory = $cursoInterfaceFactory;
+        $this->cursoResource = $cursoResource;
     }
 
     public function execute()
     {
-        $curso = $this->cursoFactory->create();
-        $collection = $curso->getCollection();
-        foreach ($collection as $item) {
-            echo $item->getData();
-        }
-
         return $this->pageFactory->create();
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function insertAlumno($nombre, $apellido) {
+
+        $alumno = $this->cursoInterfaceFactory->create();
+        $alumno->setNombre($nombre);
+        $alumno->setApellido($apellido);
+
+        $this->cursoResource->save($alumno);
+        return $alumno->getEntityId();
+
     }
 }

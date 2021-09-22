@@ -1,12 +1,12 @@
 <?php
 
-namespace Hiberus\Curso\Model\ResourceModel;
+namespace Hiberus\Bitrian\Model\ResourceModel;
 
-use Hiberus\Curso\Api\Data\CursoInterface;
+use Hiberus\Bitrian\Api\Data\ExamenInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
-class Curso extends AbstractDb
+class Examen extends AbstractDb
 {
 
     /**
@@ -41,7 +41,7 @@ class Curso extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(CursoInterface::TABLE_NAME, CursoInterface::COLUMN_ID);
+        $this->_init(ExamenInterface::TABLE_NAME, ExamenInterface::COLUMN_ID);
     }
 
     /**

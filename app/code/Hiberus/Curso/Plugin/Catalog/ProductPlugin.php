@@ -2,6 +2,7 @@
 
 namespace Hiberus\Curso\Plugin\Catalog;
 
+use Hiberus\Curso\Model\Author;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
@@ -12,15 +13,18 @@ class ProductPlugin
      * @var ScopeConfigInterface
      */
     protected ScopeConfigInterface $scopeConfig;
+    protected Author $author;
 
     /**
      * @param ScopeConfigInterface $scopeConfig
+     * @param Author $author
      */
     public function __construct(
-        ScopeConfigInterface $scopeConfig
-    )
-    {
+        ScopeConfigInterface $scopeConfig,
+        Author $author
+    ) {
         $this->scopeConfig = $scopeConfig;
+        $this->author = $author;
     }
 
     /**
@@ -31,25 +35,17 @@ class ProductPlugin
     public function afterGetName(
         \Magento\Catalog\Model\Product $subject,
         $result
-    ) {
-        $nombreGeneral = $this->scopeConfig->getValue(
-            'hiberus_nombre/general/nombre_general',
-            ScopeInterface::SCOPE_STORE,
+    ): string
+    {
 
-        );
-        $result = $result . ' ' . $nombreGeneral;
+//        $nombreGeneral = $this->scopeConfig->getValue(
+//            'hiberus_nombre/general/nombre_general',
+//            ScopeInterface::SCOPE_STORE
+//        );
+        $result = $result . ' ' . $this->author->getAuthorName();
+
         return $result;
+
     }
 
-    public function afterLoad(
-        \Magento\Catalog\Model\Product $subject,
-        $result
-    ) {
-        $numeroGeneral = $this->scopeConfig->getValue(
-            'hiberus_numero/general/numero_general',
-            ScopeInterface::SCOPE_STORE,
-
-        );
-        $result->setDescription($result->getDescription().$numeroGeneral);
-    }
 }
