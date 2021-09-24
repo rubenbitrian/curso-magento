@@ -1,14 +1,31 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Hiberus\Bitrian\Api\Data\ExamenInterface" type="Hiberus\Bitrian\Model\Examen"/>
-    <preference for="Hiberus\Bitrian\Api\ExamenRepositoryInterface" type="Hiberus\Bitrian\Model\ExamenRepository"/>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <preference for="Hiberus\Bitrian\Api\Data\NotasInterface" type="Hiberus\Bitrian\Model\Notas"/>
+    <preference for="Hiberus\Bitrian\Api\NotasRepositoryInterface" type="Hiberus\Bitrian\Model\NotasRepository"/>
 
     <type name="Magento\Framework\EntityManager\MetadataPool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Hiberus\Bitrian\Api\Data\ExamenInterface" xsi:type="array">
-                    <item name="entityTableName" xsi:type="const">Hiberus\Bitrian\Api\Data\ExamenInterface::TABLE_NAME</item>
-                    <item name="identifierField" xsi:type="const">Hiberus\Bitrian\Api\Data\ExamenInterface::COLUMN_ID</item>
+                <item name="Hiberus\Bitrian\Api\Data\NotasInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Hiberus\Bitrian\Api\Data\NotasInterface::TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Hiberus\Bitrian\Api\Data\NotasInterface::COLUMN_ID</item>
                 </item>
+            </argument>
+        </arguments>
+    </type>
+
+<!-- Plugin de notas suspensas -->
+
+    <type name="Hiberus\Bitrian\Model\Notas">
+        <plugin name="notas_plugin" type="Hiberus\Bitrian\Plugin\Marks\MarksPlugin" sortOrder="10"  />
+    </type>
+
+    <!-- Comando de notas -->
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="comando_bitrian" xsi:type="object">Hiberus\Bitrian\Console\NotasCommand</item>
             </argument>
         </arguments>
     </type>

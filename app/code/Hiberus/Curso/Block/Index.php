@@ -3,7 +3,7 @@
 namespace Hiberus\Curso\Block;
 
 use Hiberus\Curso\Api\CursoRepositoryInterface;
-use Hiberus\Curso\Model\Examen;
+use Hiberus\Curso\Model\Curso;
 use Hiberus\Curso\Api\Data\CursoInterfaceFactory;
 
 class Index extends \Magento\Framework\View\Element\Template
@@ -18,10 +18,10 @@ class Index extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry                      $registry,
-        Examen                                           $curso,
+        Curso                                           $curso,
         CursoRepositoryInterface                         $cursoRepository,
         CursoInterfaceFactory                            $cursoInterfaceFactory,
-        \Hiberus\Curso\Model\ResourceModel\Examen        $cursoResource,
+        \Hiberus\Curso\Model\ResourceModel\Curso        $cursoResource,
         array                                            $data = []
     ) {
         $this->registry = $registry;
@@ -34,7 +34,7 @@ class Index extends \Magento\Framework\View\Element\Template
 
     public function getAlumno() {
 
-        $crearAlumno = $this->insertAlumno('carlos', 'jimenez');
+        $crearAlumno = $this->insertAlumno('Ruben', 'Bitrian');
 
         return $this->cursoRepository->getById($crearAlumno);
 

@@ -1,0 +1,28 @@
+@margin-left-primary: 20px;
+& when (@media-common = true) {
+    .page-main {
+        .title{
+            color:green;
+        }
+    }
+
+    ul:nth-child(even){
+        .notas-mixin(@margin-left-primary);
+    }
+
+    .approved{
+        .notas-mixinMark(green);
+    }
+
+    .suspensed{
+        .notas-mixinMark(red);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-main {
+        .title{
+            color:red;
+        }
+    }
+}

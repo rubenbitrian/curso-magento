@@ -1,12 +1,13 @@
 <?php
 
 namespace Hiberus\Bitrian\Api\Data;
+use Magento\Framework\Api\ExtensibleDataInterface;
 
-interface ExamenInterface extends \Magento\Framework\Api\ExtensibleDataInterface
-{
+interface NotasInterface extends ExtensibleDataInterface {
 
-    public const TABLE_NAME = 'hiberus_exam';
-    public const COLUMN_ID = 'id_exam';
+    const TABLE_NAME = 'hiberus_exam';
+
+    const COLUMN_ID = 'id_exam';
 
     /**
      * @return int
@@ -22,32 +23,32 @@ interface ExamenInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     /**
      * @return string
      */
-    public function getFirstname();
+    public function getFirstName();
 
     /**
      * @param string $firstname
      * @return $this
      */
-    public function setFirstname($firstname);
+    public function setFirstName($firstname);
 
     /**
      * @return string
      */
-    public function getLastname();
+    public function getLastName();
 
     /**
      * @param string $lastname
      * @return $this
      */
-    public function setLastname($lastname);
+    public function setLastName($lastname);
 
     /**
-     * @return double
+     * @return float
      */
     public function getMark();
 
     /**
-     * @param double $mark
+     * @param float $mark
      * @return $this
      */
     public function setMark($mark);

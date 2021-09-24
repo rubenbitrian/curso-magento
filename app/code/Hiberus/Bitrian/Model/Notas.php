@@ -2,37 +2,35 @@
 
 namespace Hiberus\Bitrian\Model;
 
-use Hiberus\Bitrian\Api\Data\ExamenInterface;
+use Hiberus\Bitrian\Api\Data\NotasInterface;
 use Magento\Framework\Model\AbstractModel;
 
-class Examen extends AbstractModel implements ExamenInterface
+
+class Notas extends AbstractModel implements NotasInterface
 {
 
     protected function _construct() {
-        $this->_init(\Hiberus\Bitrian\Model\ResourceModel\Examen::class);
+        $this->_init(\Hiberus\Bitrian\Model\ResourceModel\Notas::class);
     }
-
 
     /**
      * @inheritDoc
      */
-    public function getIdExam()
-    {
+    public function getIdExam() {
         return $this->getData('id_exam');
     }
 
     /**
      * @inheritDoc
      */
-    public function setIdExam($idExam)
-    {
+    public function setIdExam($idExam) {
         return $this->setData('id_exam', $idExam);
     }
 
     /**
      * @inheritDoc
      */
-    public function getFirstname()
+    public function getFirstName()
     {
         return $this->getData('firstname');
     }
@@ -40,7 +38,7 @@ class Examen extends AbstractModel implements ExamenInterface
     /**
      * @inheritDoc
      */
-    public function setFirstname($firstname)
+    public function setFirstName($firstname)
     {
         return $this->setData('firstname', $firstname);
     }
@@ -48,7 +46,7 @@ class Examen extends AbstractModel implements ExamenInterface
     /**
      * @inheritDoc
      */
-    public function getLastname()
+    public function getLastName()
     {
         return $this->getData('lastname');
     }
@@ -56,7 +54,7 @@ class Examen extends AbstractModel implements ExamenInterface
     /**
      * @inheritDoc
      */
-    public function setLastname($lastname)
+    public function setLastName($lastname)
     {
         return $this->setData('lastname', $lastname);
     }

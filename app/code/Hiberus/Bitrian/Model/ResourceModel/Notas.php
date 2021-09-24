@@ -2,34 +2,32 @@
 
 namespace Hiberus\Bitrian\Model\ResourceModel;
 
-use Hiberus\Bitrian\Api\Data\ExamenInterface;
+use Hiberus\Bitrian\Api\Data\NotasInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use \Magento\Framework\Model\ResourceModel\Db\Context;
+use \Magento\Framework\EntityManager\MetadataPool;
+use \Magento\Framework\EntityManager\EntityManager;
 
-class Examen extends AbstractDb
+class  Notas extends AbstractDb
 {
 
     /**
-     * @var \Magento\Framework\EntityManager\MetadataPool
+     * @var MetadataPool
      */
-    private \Magento\Framework\EntityManager\MetadataPool $metadataPool;
+    private MetadataPool $metadataPool;
     /**
-     * @var \Magento\Framework\EntityManager\EntityManager
+     * @var EntityManager
      */
-    private \Magento\Framework\EntityManager\EntityManager $entityManager;
+    private EntityManager $entityManager;
 
     /**
-     * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
-     * @param \Magento\Framework\EntityManager\MetadataPool $metadataPool
-     * @param \Magento\Framework\EntityManager\EntityManager $entityManager
+     * @param Context $context
+     * @param MetadataPool $metadataPool
+     * @param EntityManager $entityManager
      * @param null $connectionName
      */
-    public function __construct(
-        \Magento\Framework\Model\ResourceModel\Db\Context $context,
-        \Magento\Framework\EntityManager\MetadataPool $metadataPool,
-        \Magento\Framework\EntityManager\EntityManager $entityManager,
-        $connectionName = null
-    ) {
+    public function __construct(Context $context, MetadataPool $metadataPool, EntityManager $entityManager, $connectionName = null) {
         $this->metadataPool = $metadataPool;
         $this->entityManager = $entityManager;
 
@@ -41,7 +39,7 @@ class Examen extends AbstractDb
      */
     protected function _construct()
     {
-        $this->_init(ExamenInterface::TABLE_NAME, ExamenInterface::COLUMN_ID);
+        $this->_init(NotasInterface::TABLE_NAME, NotasInterface::COLUMN_ID);
     }
 
     /**
@@ -67,7 +65,7 @@ class Examen extends AbstractDb
 
     /**
      * @param AbstractModel $object
-     * @return AbstractDb|void
+     * @return void
      * @throws \Exception
      */
     public function delete(AbstractModel $object) {
